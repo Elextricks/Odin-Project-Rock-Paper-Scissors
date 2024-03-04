@@ -73,7 +73,7 @@ function playgame() {
     for (i = 0; i < 5; i++){
         if (verifyPlayerChoice(playerSelection)){
             playRound(playerSelection, getComputerChoice(computerOptions));
-            document.getElementById("result").innerHTML = result;
+            document.getElementById("result").innerHTML = "Last result: " + result;
         }
         else {
             document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
