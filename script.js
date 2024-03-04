@@ -8,6 +8,17 @@ function getComputerChoice(computerOptions) {
     return computerOptions[randomChoice];
 }
 
+function verifyPlayerChoice(playerSelection) {
+    if (playerSelection.toLowerCase() !== "rock" && 
+        playerSelection.toLowerCase() !== "paper" && 
+        playerSelection.toLowerCase() !== "scissors") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     console.log (playerSelection + " vs. " + computerSelection);
     playerSelectionLower = playerSelection.toLowerCase();
@@ -56,10 +67,18 @@ function playRound(playerSelection, computerSelection) {
             result = "Tie! Both selected scissors!";
         }
     }
-    document.getElementById("result").innerHTML = result; 
 }
 
-playRound(playerSelection, getComputerChoice(computerOptions));
+function playgame() {
+    if (verifyPlayerChoice(playerSelection)){
+        playRound(playerSelection, getComputerChoice(computerOptions));
+        document.getElementById("result").innerHTML = result;
+    }
+    else {
+        document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
+    }
+}
 
+playgame()
 
 
