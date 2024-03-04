@@ -20,7 +20,6 @@ function verifyPlayerChoice(playerSelection) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    console.log (playerSelection + " vs. " + computerSelection);
     playerSelectionLower = playerSelection.toLowerCase();
     computerSelectionLower = computerSelection.toLowerCase();
 
@@ -70,10 +69,16 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playgame() {
-    for (i = 0; i < 5; i++){
+    for (i = 1; i <= 5; i++){
         if (verifyPlayerChoice(playerSelection)){
             playRound(playerSelection, getComputerChoice(computerOptions));
-            document.getElementById("result").innerHTML = "Last result: " + result;
+            
+            let newElement = document.createElement("h1");
+            newElement.setAttribute("id", `game${i}`)
+
+            document.body.appendChild(newElement);
+
+            document.getElementById(`game${i}`).innerHTML = `Game ${i}: ` + result;
         }
         else {
             document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
