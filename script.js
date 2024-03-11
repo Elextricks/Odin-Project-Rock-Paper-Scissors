@@ -79,20 +79,40 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playgame() {
-    if (verifyPlayerChoice(playerSelection)){
-        playRound(playerSelection, getComputerChoice(computerOptions));
-    }
-    else {
-        document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
-    }
+    playRound(playerSelection, getComputerChoice(computerOptions));
 }
 
 function updateUserScore() {
-    userScore += 1
-    userScoreHolder.textContent = "Score: " + userScore;
+    userScore += 1;
+    userScoreHolder.style.cssText = "display:flex; justify-content:center; margin: 5px;"
+    userScoreHolder.textContent = userScore;
+
+    checkEndGame();
 }
 
 function updateComputerScore() {
-    computerScore += 1
-    computerScoreHolder.textContent = "Score: " + computerScore;
+    computerScore += 1;
+    computerScoreHolder.style.cssText = "display:flex; justify-content:center; margin: 5px;"
+    computerScoreHolder.textContent = computerScore;
+
+    checkEndGame();
+}
+
+function checkEndGame() {
+    if (userScore === 5) {
+        const winnerDiv = document.createElement("div");
+        const newContent = document.createTextNode("You've won 5 games! Congratulations!")
+
+        winnerDiv.appendChild(newContent);
+        winnerDiv.style.cssText = 'display: flex; justify-content: center; font-weight:bold; font-size:32px;';
+        document.body.appendChild(winnerDiv);
+    }
+    else if (computerScore === 5) {
+        const winnerDiv = document.createElement("div");
+        const newContent = document.createTextNode("Computer has won 5 games! You lose!")
+
+        winnerDiv.appendChild(newContent);
+        winnerDiv.style.cssText = 'display: flex; justify-content: center; font-size:32px;';
+        document.body.appendChild(winnerDiv);
+    }
 }
