@@ -61,12 +61,14 @@ function playRound(playerSelection, computerSelection) {
             result = "Tie! Both selected paper!";
         }
         else if (computerSelectionLower === "scissors") {;
+            result = "You lose! Scissors beats paper!"
             updateComputerScore()
         }
     }
 
     else if (playerSelectionLower === "scissors") {
-        if (computerSelectionLower === "rock") {;
+        if (computerSelectionLower === "rock") {
+            result = "You lose! Rock beats paper!";
             updateComputerScore()
         }
         else if (computerSelectionLower === "paper") {;
@@ -116,7 +118,7 @@ function checkEndGame() {
         const newContent = document.createTextNode("Computer has won 5 games! You lose!")
 
         winnerDiv.appendChild(newContent);
-        winnerDiv.style.cssText = 'display: flex; justify-content: center; font-size:32px;';
+        winnerDiv.style.cssText = 'display: flex; justify-content: center; font-weight:bold; font-size:32px;';
         document.body.appendChild(winnerDiv);
     }
 }
