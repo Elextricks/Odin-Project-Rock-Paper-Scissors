@@ -1,6 +1,10 @@
 const computerOptions = ["rock", "paper", "scissors"];
-let playerSelection = ""
 const btnSelections = document.querySelectorAll('.player-selection');
+const userScoreHolder = document.querySelector("#user-score");
+const computerScoreHolder = document.querySelector("#computer-score");
+let computerScore = 0;
+let userScore = 0;
+let playerSelection = ""
 
 btnSelections.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -10,13 +14,9 @@ btnSelections.forEach(btn => {
     });
 });
 
-
 const computerSelection = getComputerChoice(computerOptions);
 let result = "";
 
-function getPlayerSelection() {
-
-}
 
 function getComputerChoice(computerOptions) {
     randomChoice = Math.floor(Math.random() * computerOptions.length);
@@ -39,68 +39,60 @@ function playRound(playerSelection, computerSelection) {
     computerSelectionLower = computerSelection.toLowerCase();
 
     if (playerSelectionLower === "rock") {
-        if (computerSelectionLower === "rock") {
-            console.log("Tie! Both selected rock!");
+        if (computerSelectionLower === "rock") {;
             result = "Tie! Both selected rock!";
         }
-        else if (computerSelectionLower === "paper") {
-            console.log("You lose! Paper beats rock!");
+        else if (computerSelectionLower === "paper") {;
             result = "You lose! Paper beats rock!";
+            updateComputerScore()
         }
-        else if (computerSelectionLower === "scissors") {
-            console.log("You win! Rock beats scissors!");
+        else if (computerSelectionLower === "scissors") {;
             result = "You win! Rock beats scissors!";
+            updateUserScore()
         }
     }
     else if (playerSelectionLower === "paper") {
-        if (computerSelectionLower === "rock") {
-            console.log("You win! Paper beats rock!");
+        if (computerSelectionLower === "rock") {;
             result = "You win! Paper beats rock!";
+            updateUserScore()
         }
-        else if (computerSelectionLower === "paper") {
-            console.log("Tie! Both selected paper!");
+        else if (computerSelectionLower === "paper") {;
             result = "Tie! Both selected paper!";
         }
-        else if (computerSelectionLower === "scissors") {
-            console.log("You lose! Scissors beats paper!");
-            result = "You lose! Scissors beats paper!";
+        else if (computerSelectionLower === "scissors") {;
+            updateComputerScore()
         }
     }
 
     else if (playerSelectionLower === "scissors") {
-        if (computerSelectionLower === "rock") {
-            console.log("You lose! Rock beats scissors");
-            result = "You lose! Rock beats scissors";
+        if (computerSelectionLower === "rock") {;
+            updateComputerScore()
         }
-        else if (computerSelectionLower === "paper") {
-            console.log("You win! Scissors beats paper!");
+        else if (computerSelectionLower === "paper") {;
             result = "You win! Scissors beats paper!";
+            updateUserScore()
         }
-        else if (computerSelectionLower === "scissors") {
-            console.log("Tie! Both selected scissors!");
+        else if (computerSelectionLower === "scissors") {;
             result = "Tie! Both selected scissors!";
         }
     }
 }
 
 function playgame() {
-    for (i = 1; i <= 5; i++){
-        if (verifyPlayerChoice(playerSelection)){
-            playRound(playerSelection, getComputerChoice(computerOptions));
-            
-            let newElement = document.createElement("h1");
-            newElement.setAttribute("id", `game${i}`)
-
-            document.body.appendChild(newElement);
-
-            document.getElementById(`game${i}`).innerHTML = `Game ${i}: ` + result;
-        }
-        else {
-            document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
-        }
+    if (verifyPlayerChoice(playerSelection)){
+        playRound(playerSelection, getComputerChoice(computerOptions));
+    }
+    else {
+        document.getElementById("result").innerHTML = "You did not select rock, paper, or scissors. Please try again";
     }
 }
 
-playgame()
+function updateUserScore() {
+    userScore += 1
+    userScoreHolder.textcontent += "Score: " + userScore;
+}
 
-
+function updateComputerScore() {
+    computerScore += 1
+    computerScoreHolder.textcontent = "Score: " + computerScore;
+}
