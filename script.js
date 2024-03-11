@@ -1,7 +1,22 @@
 const computerOptions = ["rock", "paper", "scissors"];
-const playerSelection = prompt("Enter your selection");
+let playerSelection = ""
+const btnSelections = document.querySelectorAll('.player-selection');
+
+btnSelections.forEach(btn => {
+    btn.addEventListener('click', () => {
+        console.log(btn.textContent);
+        playerSelection = btn.textContent;
+        playgame();
+    });
+});
+
+
 const computerSelection = getComputerChoice(computerOptions);
-let result = ""
+let result = "";
+
+function getPlayerSelection() {
+
+}
 
 function getComputerChoice(computerOptions) {
     randomChoice = Math.floor(Math.random() * computerOptions.length);

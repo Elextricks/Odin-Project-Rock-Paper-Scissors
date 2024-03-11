@@ -1,0 +1,22 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    margin: 0, 20px, 0, 20px;
+}
+
+#user-score, #computer-score {
+    margin: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
