@@ -134,6 +134,8 @@ function checkEndGame() {
         winnerDiv.appendChild(newContent);
         winnerDiv.style.cssText = 'display: flex; justify-content: center; font-weight:bold; font-size:32px;';
         document.body.appendChild(winnerDiv);
+
+        restartGame();
     }
     else if (computerScore === 5) {
         // Display a message if the computer wins.
@@ -142,5 +144,13 @@ function checkEndGame() {
         winnerDiv.appendChild(newContent);
         winnerDiv.style.cssText = 'display: flex; justify-content: center; font-weight:bold; font-size:32px;';
         document.body.appendChild(winnerDiv);
+
+        restartGame();
     }
+}
+
+function restartGame() {
+    const restartBtn = document.createElement("button");
+    restartBtn.textContent = 'Restart';
+    document.body.appendChild(restartBtn);
 }
