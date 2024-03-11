@@ -1,12 +1,21 @@
 h1 {
-    display: flex;
-    justify-content: center;
     margin-top: 200px;
+    margin-bottom: 2px;
+}
+
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .score {
     display: flex;
     justify-content: space-around;
+
 }
 
 #user-score, #computer-score {

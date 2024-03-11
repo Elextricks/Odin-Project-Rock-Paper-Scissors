@@ -89,10 +89,10 @@ function playgame() {
 
 function updateUserScore() {
     userScore += 1
-    userScoreHolder.textcontent += "Score: " + userScore;
+    userScoreHolder.textContent = "Score: " + userScore;
 }
 
 function updateComputerScore() {
     computerScore += 1
-    computerScoreHolder.textcontent = "Score: " + computerScore;
+    computerScoreHolder.textContent = "Score: " + computerScore;
 }
