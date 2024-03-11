@@ -2,6 +2,7 @@ const computerOptions = ["rock", "paper", "scissors"];
 const btnSelections = document.querySelectorAll('.player-selection');
 const userScoreHolder = document.querySelector("#user-score");
 const computerScoreHolder = document.querySelector("#computer-score");
+const gameResult = document.createElement('h2')
 let computerScore = 0;
 let userScore = 0;
 let playerSelection = ""
@@ -80,6 +81,9 @@ function playRound(playerSelection, computerSelection) {
 
 function playgame() {
     playRound(playerSelection, getComputerChoice(computerOptions));
+    gameResult.textContent = result;
+    gameResult.style.cssText = "display:flex; justify-content:center;"
+    document.body.appendChild(gameResult);
 }
 
 function updateUserScore() {
